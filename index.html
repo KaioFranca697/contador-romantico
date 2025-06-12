@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Amor em Contagem</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      color: #fff;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    p {
+      font-size: 1.8rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Nosso amor em contagem 💖</h1>
+  <p id="counter"></p>
+
+  <footer>Desde 17/11/2017</footer>
+
+  <script>
+    const startDate = new Date('2017-11-17T00:00:00');
+
+    function updateCounter() {
+      const now = new Date();
+      const diffMs = now - startDate;
+
+      const seconds = Math.floor(diffMs / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      const years = Math.floor(days / 365.25);
+      const months = Math.floor((days % 365.25) / 30.44);
+      const remDays = Math.floor((days % 365.25) % 30.44);
+
+      const remHours = hours % 24;
+      const remMinutes = minutes % 60;
+      const remSeconds = seconds % 60;
+
+      document.getElementById('counter').textContent = 
+        `${years} anos, ${months} meses, ${remDays} dias, ` +
+        `${remHours}h ${remMinutes}min ${remSeconds}s`;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+  </script>
+</body>
+</html>
